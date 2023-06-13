@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface EmbedWidgetProps {
-  isVisible: boolean;
+  isDefaultVisible?: boolean;
 };
 
 export interface DomTreeToastProps {

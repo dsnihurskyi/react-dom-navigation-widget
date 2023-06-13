@@ -1,20 +1,38 @@
 {
-  "name": "react-dom-navigation-widget",
+  "name": "react-dom-navigator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A React Typescript module that provides a dom tree nodes visualization",
+  "keywords": [
+    "react-bootstrap",
+    "bootstrap",
+    "widget",
+    "dom-tree",
+    "react-dom",
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && copyfiles -u 1 ./src/EmbedDomWidget/*.css ./dist/src"
   },
   "author": "dsnihurskyi",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsnihurskyi/react-dom-navigator"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
   "devDependencies": {
     "@types/bootstrap": "^5.2.6",
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
-    "bootstrap": "^5.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "copyfiles": "^2.4.1",
     "typescript": "^5.1.3"
   }
 }
