@@ -24,8 +24,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-require("bootstrap/dist/css/bootstrap.css");
-require("./index.css");
 var DomTreeList = function (_a) {
     var widgetRef = _a.widgetRef, domTree = _a.domTree;
     var _b = (0, react_1.useState)(null), selectedNode = _b[0], setSelectedNode = _b[1];

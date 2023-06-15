@@ -1,10 +1,6 @@
 import React, { FC, MouseEvent, useEffect, useState } from 'react';
 import { DomTreeListProps } from './types';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
-
-
 const DomTreeList: FC<DomTreeListProps> = ({ widgetRef, domTree }) => {
   const [selectedNode, setSelectedNode] = useState<HTMLElement | null>(null);
 
