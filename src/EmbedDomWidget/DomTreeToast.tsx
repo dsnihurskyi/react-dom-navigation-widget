@@ -1,7 +1,11 @@
 import React from 'react';
-import { DomTreeToastProps } from './types';
+import { type DomTreeToastProps } from './types';
 
-const DomTreeToast: React.FC<DomTreeToastProps> = ({ toastRef, toggleToast, children }) => (
+const DomTreeToast: React.FC<DomTreeToastProps> = ({
+  toastRef,
+  toggleToast,
+  children,
+}) => (
   <div className='toast-container position-fixed top-0 end-0 p-3'>
     <div
       ref={toastRef}

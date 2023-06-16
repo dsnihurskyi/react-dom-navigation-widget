@@ -1,4 +1,4 @@
-import { FC } from 'react';
-import { DomTreeListProps } from './types';
-declare const DomTreeList: FC<DomTreeListProps>;
+import React from 'react';
+import { type DomTreeListProps } from './types';
+declare const DomTreeList: React.FC<DomTreeListProps>;
 export default DomTreeList;

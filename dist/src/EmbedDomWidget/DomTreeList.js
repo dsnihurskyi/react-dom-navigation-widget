@@ -27,21 +27,26 @@ var react_1 = __importStar(require("react"));
 var DomTreeList = function (_a) {
     var widgetRef = _a.widgetRef, domTree = _a.domTree;
     var _b = (0, react_1.useState)(null), selectedNode = _b[0], setSelectedNode = _b[1];
-    var handleNodeClick = function (event, node) {
-        event.stopPropagation();
+    var handleNodeClick = function (currentEvent, node) {
+        currentEvent.stopPropagation();
         node.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setSelectedNode(node);
     };
     (0, react_1.useEffect)(function () {
-        var resizeListener = function () { return setSelectedNode(null); };
+        var resizeListener = function () {
+            setSelectedNode(null);
+        };
         window.addEventListener('resize', resizeListener);
         return function () {
             window.removeEventListener('resize', resizeListener);
         };
     }, []);
     (0, react_1.useEffect)(function () {
-        if (!selectedNode)
+        if (selectedNode === null) {
             return;
+        }
+        ;
+        // eslint-disable-next-line no-shadow
         var _a = selectedNode.getBoundingClientRect(), top = _a.top, left = _a.left, width = _a.width, height = _a.height;
         var newOverlayElement = document.createElement('div');
         newOverlayElement.setAttribute('data-embed-widget-highlight', 'true');
@@ -51,9 +56,7 @@ var DomTreeList = function (_a) {
         newOverlayElement.style.height = "".concat(height, "px");
         document.body.appendChild(newOverlayElement);
         return function () {
-            if (newOverlayElement) {
-                document.body.removeChild(newOverlayElement);
-            }
+            document.body.removeChild(newOverlayElement);
         };
     }, [selectedNode]);
     var renderTree = function (node, onClick) {
@@ -69,7 +72,9 @@ var DomTreeList = function (_a) {
             || node.tagName.toLowerCase() === 'noscript');
         return (react_1.default.createElement("ul", { className: 'dom-tree-list' },
             react_1.default.createElement("li", { className: 'dom-tree-list__item' },
-                react_1.default.createElement("button", { onClick: function (event) { return onClick(event, node); }, className: "btn btn-".concat(selectedNode === node ? 'primary' : 'link', " btn-sm"), disabled: isNonInteractiveNode }, node.tagName.toUpperCase()),
+                react_1.default.createElement("button", { onClick: function (currentEvent) {
+                        onClick(currentEvent, node);
+                    }, className: "btn btn-".concat(selectedNode === node ? 'primary' : 'link', " btn-sm"), disabled: isNonInteractiveNode }, node.tagName.toUpperCase()),
                 (node.children.length > 0 && !isNonInteractiveNode) && (Array.from(node.children).map(function (child, idx) { return (react_1.default.createElement(react_1.default.Fragment, { key: idx }, renderTree(child, onClick))); })))));
     };
     return (react_1.default.createElement("div", { className: 'dom-tree-list-wrapper' }, renderTree(domTree, handleNodeClick)));

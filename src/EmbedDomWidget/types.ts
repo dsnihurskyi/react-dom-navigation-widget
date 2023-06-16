@@ -1,16 +1,16 @@
-import React from 'react';
+import type React from 'react';
 
 export interface EmbedWidgetProps {
-  isDefaultVisible?: boolean;
+  isDefaultVisible?: boolean
 };
 
 export interface DomTreeToastProps {
-  toastRef: React.RefObject<HTMLDivElement>;
-  toggleToast: () => void;
-  children: React.ReactNode[];
+  toastRef: React.RefObject<HTMLDivElement>
+  toggleToast: () => void
+  children: React.ReactNode[]
 };
 
 export interface DomTreeListProps {
-  widgetRef: React.RefObject<HTMLDivElement>;
-  domTree: HTMLElement;
+  widgetRef: React.RefObject<HTMLDivElement>
+  domTree: HTMLElement
 };

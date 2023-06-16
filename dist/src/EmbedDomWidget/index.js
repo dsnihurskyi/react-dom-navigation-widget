@@ -40,7 +40,7 @@ var EmbedWidget = function (_a) {
     var _b = (0, react_1.useState)(Boolean(isDefaultVisible)), isWidgetVisible = _b[0], setIsWidgetVisible = _b[1];
     var _c = (0, react_1.useState)(null), domTree = _c[0], setDomTree = _c[1];
     var handleSetToastVisibility = function (visibilityValue) {
-        if (toastRef === null || toastRef === void 0 ? void 0 : toastRef.current) {
+        if ((toastRef === null || toastRef === void 0 ? void 0 : toastRef.current) !== null) {
             var toastInstance = bootstrap_1.Toast.getOrCreateInstance(toastRef.current);
             visibilityValue
                 ? toastInstance.show()
@@ -56,12 +56,12 @@ var EmbedWidget = function (_a) {
     };
     var toggleParsedDOM = function () {
         var root = document.documentElement;
-        setDomTree(domTree ? null : root);
+        setDomTree((domTree !== null) ? null : root);
     };
-    return react_dom_1.default.createPortal((react_1.default.createElement("div", { ref: widgetRef, className: "embed-widget" },
+    return react_dom_1.default.createPortal((react_1.default.createElement("div", { ref: widgetRef, className: 'embed-widget' },
         !isWidgetVisible && (react_1.default.createElement("button", { type: 'button', className: 'btn btn-light embed-widget-button', onClick: toggleToast }, "\uD83D\uDEE0 Show DOM tree navigation widget")),
         react_1.default.createElement(DomTreeToast_1.default, { toastRef: toastRef, toggleToast: toggleToast },
-            react_1.default.createElement("button", { onClick: toggleParsedDOM, className: "btn btn-".concat(domTree ? 'warning' : 'primary', " mb-2") }, domTree ? 'Clear' : 'Parse DOM'),
-            domTree && widgetRef && isWidgetVisible && (react_1.default.createElement(DomTreeList_1.default, { widgetRef: widgetRef, domTree: domTree }))))), document.body);
+            react_1.default.createElement("button", { onClick: toggleParsedDOM, className: "btn btn-".concat((domTree !== null) ? 'warning' : 'primary', " mb-2") }, (domTree !== null) ? 'Clear' : 'Parse DOM'),
+            (domTree != null) && Boolean(widgetRef) && isWidgetVisible && (react_1.default.createElement(DomTreeList_1.default, { widgetRef: widgetRef, domTree: domTree }))))), document.body);
 };
 exports.default = EmbedWidget;
